@@ -11,7 +11,7 @@ int main() {
 	string str2;
 	int num2 = 0;
 	char c;
-	map<string, int> rom_digit = {{"I", 1}, {"V", 5}, {"X", 10}, {"L", 50}, {"C", 100}, {"D", 500}, {"M", 1000}};
+	map<char, int> rom_digit = {{'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, {'C', 100}, {'D', 500}, {'M', 1000}};
 
 	cin >> str1 >> str2;
 	for (int i = 0; i < str1.length(); i++) {
