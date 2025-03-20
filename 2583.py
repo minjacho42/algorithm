@@ -7,14 +7,13 @@ def set_generator(left_bottom, right_top):
     for i in range(x1, x2):
         for j in range(y1, y2):
             point_set.add((i, j))
-    print(point_set)
     return point_set
 
 m,n,k = tuple(map(int, input().split()))
 areas = []
 for _ in range(k):
     areas.append(tuple(map(int, input().split())))
-total_points = set_generator((0, 0), (m, n))
+total_points = set_generator((0, 0), (n, m))
 for area in areas:
     x1, y1, x2, y2 = area
     total_points -= set_generator((x1, y1), (x2, y2))
@@ -29,15 +28,15 @@ while len(total_points) > 0:
     while len(bfs_queue) > 0:
         x, y = bfs_queue.pop()
         area_size += 1
-        print(x, y, area_size)
         for dx, dy in [(0,1), (1,0), (0,-1), (-1,0)]:
             if (x + dx, y + dy) in total_points:
                 bfs_queue.appendleft((x+dx,y+dy))
                 total_points.discard((x+dx,y+dy))
     area_sizes.append(area_size)
+print(len(area_sizes))
 for idx, area_size in enumerate(sorted(area_sizes)):
     if idx == 0:
         print(area_size, end="")
     else:
-        print(" ", area_size, end="")
+        print(f" {area_size}", end="")
 
